@@ -43,9 +43,11 @@ export default function Navbar() {
             onClick={scrollToTop}
             className="flex items-center gap-3"
           >
-            <span className="flex h-7 w-7 items-center justify-center bg-[#F3F2EE] font-display text-sm font-semibold text-black">
-              S
-            </span>
+           <img 
+             src="/icon.png" 
+             alt="Syotian Logo" 
+             className="h-7 w-auto object-contain" 
+            />
             <span className="font-mono text-sm uppercase tracking-[0.35em] text-[#F3F2EE]">
               Syotian
             </span>
