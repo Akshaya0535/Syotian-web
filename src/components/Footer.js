@@ -1,4 +1,5 @@
 import { scrollToId, scrollToTop } from "../lib/scroll";
+import syotianLogo from '../icon.png';
 
 const NAV = [
   { label: "Model", href: "#model" },
@@ -32,7 +33,7 @@ export default function Footer() {
           <div className="md:col-span-6">
             <div className="flex items-center gap-3">
               <img 
-             src="/icon.png" 
+             src={syotianLogo} 
              alt="Syotian Logo" 
              className="h-7 w-auto object-contain" 
             />

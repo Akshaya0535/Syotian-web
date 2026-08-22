@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { scrollToId, scrollToTop } from "../lib/scroll";
+import syotianLogo from '../icon.png';
 
 const LINKS = [
   { label: "Model", href: "#model" },
@@ -44,7 +45,7 @@ export default function Navbar() {
             className="flex items-center gap-3"
           >
            <img 
-             src="/icon.png" 
+             src={syotianLogo} 
              alt="Syotian Logo" 
              className="h-7 w-auto object-contain" 
             />
