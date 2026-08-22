@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "syotian-web",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-08-23",
+  "assets": {
+    "directory": "./build", // CRACO outputs to ./build
+    "binding": "ASSETS"
+  }
+}
