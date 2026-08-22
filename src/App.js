@@ -18,7 +18,7 @@ import Terms from './components/Terms';
 import Privacy from './components/Privacy';
 
 const NOISE =
-  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.7'/%3E%3C/svg%3E\")";
+  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E\")";
 
 export default function App() {
   useEffect(() => {
@@ -41,11 +41,9 @@ export default function App() {
     };
   }, []);
 
-
   return (
     <>
       <Router>
-        {/* The Toaster is now global so it works on the legal pages too */}
         <Toaster
           theme="dark"
           position="bottom-right"
@@ -59,7 +57,6 @@ export default function App() {
         />
 
         <Routes>
-         
           <Route path="/" element={
             <div className="min-h-screen bg-[#0A0A0A] text-[#F3F2EE]">
               <div
@@ -83,7 +80,6 @@ export default function App() {
             </div>
           } />
 
-          {/* Legal Pages */}
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           
@@ -91,4 +87,4 @@ export default function App() {
       </Router>
     </>
   );
-
+}
