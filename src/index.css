@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 0 0% 4%;
+        --foreground: 40 11% 94%;
+        --card: 0 0% 7%;
+        --card-foreground: 40 11% 94%;
+        --popover: 0 0% 7%;
+        --popover-foreground: 40 11% 94%;
+        --primary: 40 11% 94%;
+        --primary-foreground: 0 0% 4%;
+        --secondary: 0 0% 10%;
+        --secondary-foreground: 40 11% 94%;
+        --muted: 0 0% 10%;
+        --muted-foreground: 0 0% 55%;
+        --accent: 0 0% 12%;
+        --accent-foreground: 40 11% 94%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 40 11% 94%;
+        --border: 0 0% 14%;
+        --input: 0 0% 16%;
+        --ring: 0 0% 83%;
+        --radius: 0.75rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    html {
+        background: #0a0a0a;
+    }
+    body {
+        @apply bg-background text-foreground font-sans;
+        margin: 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+    }
+    ::selection {
+        background: #f3f2ee;
+        color: #0a0a0a;
+    }
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+    background: #242424;
+    border-radius: 8px;
+    border: 2px solid #0a0a0a;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #333;
+}
+
+/* Editorial spotlight treatment for imagery */
+.spotlight {
+    background: radial-gradient(
+        560px circle at 50% 0%,
+        rgba(255, 255, 255, 0.14),
+        transparent 65%
+    );
+}
+
+/* Pulsing ring on the constellation accent node */
+@keyframes ping-ring {
+    0% {
+        transform: scale(0.5);
+        opacity: 0.9;
+    }
+    100% {
+        transform: scale(2.6);
+        opacity: 0;
+    }
+}
+.animate-ping-ring {
+    animation: ping-ring 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+/* Hero scroll cue */
+@keyframes scroll-cue {
+    0% {
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+    45% {
+        transform: scaleY(1);
+        transform-origin: top;
+    }
+    55% {
+        transform: scaleY(1);
+        transform-origin: bottom;
+    }
+    100% {
+        transform: scaleY(0);
+        transform-origin: bottom;
+    }
+}
+.animate-scroll-cue {
+    animation: scroll-cue 2.2s ease-in-out infinite;
+}
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+
+    [data-debug-wrapper="true"] > * {
+        margin-left: inherit;
+        margin-right: inherit;
+        margin-top: inherit;
+        margin-bottom: inherit;
+        padding-left: inherit;
+        padding-right: inherit;
+        padding-top: inherit;
+        padding-bottom: inherit;
+        column-gap: inherit;
+        row-gap: inherit;
+        gap: inherit;
+        border-left-width: inherit;
+        border-right-width: inherit;
+        border-top-width: inherit;
+        border-bottom-width: inherit;
+        border-left-style: inherit;
+        border-right-style: inherit;
+        border-top-style: inherit;
+        border-bottom-style: inherit;
+        border-left-color: inherit;
+        border-right-color: inherit;
+        border-top-color: inherit;
+        border-bottom-color: inherit;
+    }
+}
