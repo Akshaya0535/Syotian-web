@@ -1,5 +1,8 @@
 export default {
   async fetch(request, env, ctx) {
+    const url = new URL(request.url);
+    const { pathname } = url;
+
     // 1. Try to fetch the actual file (JS, CSS, images, favicon)
     try {
       const assetResponse = await env.ASSETS.fetch(request);
@@ -20,8 +23,13 @@ export default {
       (secFetchMode === "navigate" ||
         secFetchDest === "document" ||
         accept.includes("text/html"));
+    const isApiRoute = pathname === "/api" || pathname.startsWith("/api/");
+    const isExtensionlessRoute =
+      pathname === "/" || !pathname.split("/").pop()?.includes(".");
+    const shouldFallbackToIndex =
+      isNavigationRequest && isExtensionlessRoute && !isApiRoute;
 
-    if (isNavigationRequest) {
+    if (shouldFallbackToIndex) {
       const indexUrl = new URL("/index.html", request.url);
       return env.ASSETS.fetch(new Request(indexUrl, request));
     }
