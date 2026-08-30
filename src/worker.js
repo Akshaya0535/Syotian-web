@@ -10,8 +10,22 @@ export default {
       // Fall through if asset fails
     }
 
-    // 2. SPA Fallback: Send route requests (/terms, /privacy) to index.html
-    const indexUrl = new URL("/index.html", request.url);
-    return env.ASSETS.fetch(new Request(indexUrl, request));
+    // 2. SPA fallback only for browser navigation requests (documents)
+    const method = request.method.toUpperCase();
+    const accept = request.headers.get("accept") || "";
+    const secFetchMode = request.headers.get("sec-fetch-mode") || "";
+    const secFetchDest = request.headers.get("sec-fetch-dest") || "";
+    const isNavigationRequest =
+      method === "GET" &&
+      (secFetchMode === "navigate" ||
+        secFetchDest === "document" ||
+        accept.includes("text/html"));
+
+    if (isNavigationRequest) {
+      const indexUrl = new URL("/index.html", request.url);
+      return env.ASSETS.fetch(new Request(indexUrl, request));
+    }
+
+    return new Response("Not Found", { status: 404 });
   },
 };
