@@ -1,6 +1,5 @@
 import { scrollToId, scrollToTop } from "../lib/scroll";
-import syotianLogo from 'url:@/icon.png';
-
+import syotianLogo from '@/icon.png';
 
 const NAV = [
   { label: "Model", href: "#model" },
@@ -20,7 +19,6 @@ const PRACTICES = [
 
 export default function Footer() {
   return (
-  
     <footer data-testid="footer" className="border-t border-white/10">
       <div className="mx-auto max-w-7xl px-6 pb-10 pt-20 md:px-10 md:pt-28">
         <button

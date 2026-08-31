@@ -2,7 +2,29 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { scrollToId, scrollToTop } from "../lib/scroll";
-import syotianLogo from 'url:@/icon.png';
+Unhandled Rejection (TypeError): module.bundle.resolve is not a function
+▶ 3 stack frames were collapsed.
+parcelHotUpdate.lq1kZ
+src/components/Footer.js:2
+  1 | import { scrollToId, scrollToTop } from "../lib/scroll";
+> 2 | import syotianLogo from 'url:@/icon.png';
+>   | ^
+  3 | 
+  4 | 
+  5 | const NAV = [
+View compiled
+▼ 4 stack frames were expanded.
+newRequire
+dist/public.31b563d9.js:84:24
+hmrAccept
+node_modules/@parcel/runtime-browser-hmr/lib/runtime-a4626ac6475f759b.js:565:2
+handleMessage
+node_modules/@parcel/runtime-browser-hmr/lib/runtime-a4626ac6475f759b.js:210:10
+async ws.onmessage
+node_modules/@parcel/runtime-browser-hmr/lib/runtime-a4626ac6475f759b.js:151:6
+▲ 4 stack frames were expanded.
+This screen is visible only in development. It will not appear if the app crashes in production.
+Open your browser’s developer console to further inspect this error.  Click the 'X' or hit ESC to dismiss this message.
 
 const LINKS = [
   { label: "Model", href: "#model" },
