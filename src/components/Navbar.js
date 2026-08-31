@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { scrollToId, scrollToTop } from "../lib/scroll";
-import syotianLogo from '../icon.png';
+import syotianLogo from 'url:@/icon.png';
 
 const LINKS = [
   { label: "Model", href: "#model" },
