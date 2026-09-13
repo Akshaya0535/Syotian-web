@@ -11,7 +11,8 @@ import {
 } from "@/components/ui/select";
 import { Reveal } from "./Reveal";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+// Replace with your actual email address
+const FORMSUBMIT_EMAIL = "info@syotian.app"; 
 
 const SERVICES = [
   "Software Engineering",
@@ -39,8 +40,28 @@ export default function CTA() {
       return;
     }
     setLoading(true);
+
     try {
-      await axios.post(`${API}/enquiries`, form);
+      // Send form data directly to FormSubmit endpoint via JSON AJAX request
+      await axios.post(
+        `https://formsubmit.co/ajax/${FORMSUBMIT_EMAIL}`,
+        {
+          name: form.name,
+          email: form.email,
+          company: form.company,
+          service: form.service,
+          message: form.message,
+          _subject: `New Project Enquiry from ${form.name}`,
+          _captcha: "false" // Set to "true" if you experience spam
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      );
+
       toast.success("Brief received — we'll respond within 48 hours.");
       setForm(EMPTY);
     } catch {
