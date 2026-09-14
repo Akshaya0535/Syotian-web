@@ -13,21 +13,14 @@ export default {
       // Fall through if asset fails
     }
 
-    // 2. SPA fallback only for browser navigation requests (documents)
+    // 2. SPA fallback for extensionless document routes
     const method = request.method.toUpperCase();
-    const accept = request.headers.get("accept") || "";
-    const secFetchMode = request.headers.get("sec-fetch-mode") || "";
-    const secFetchDest = request.headers.get("sec-fetch-dest") || "";
-    const isNavigationRequest =
-      method === "GET" &&
-      (secFetchMode === "navigate" ||
-        secFetchDest === "document" ||
-        accept.includes("text/html"));
+    const isDocumentRouteMethod = method === "GET" || method === "HEAD";
     const isApiRoute = pathname === "/api" || pathname.startsWith("/api/");
     const isExtensionlessRoute =
       pathname === "/" || !pathname.split("/").pop()?.includes(".");
     const shouldFallbackToIndex =
-      isNavigationRequest && isExtensionlessRoute && !isApiRoute;
+      isDocumentRouteMethod && isExtensionlessRoute && !isApiRoute;
 
     if (shouldFallbackToIndex) {
       const indexUrl = new URL("/index.html", request.url);
