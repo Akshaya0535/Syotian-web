@@ -65,7 +65,7 @@
     "start": "parcel",
     "build": "parcel build && mkdir -p dist && cp public/robots.txt public/sitemap.xml dist/",
     "test": "jest",
-    "deploy": "parcel build && wrangler deploy",
+    "deploy": "yarn build && wrangler deploy",
     "lint": "eslint src"
   },
   "browserslist": {
