@@ -63,9 +63,9 @@
   },
   "scripts": {
     "start": "parcel",
-    "build": "parcel build",
+    "build": "parcel build && sh scripts/copy-public-to-dist.sh",
     "test": "jest",
-    "deploy": "parcel build && wrangler deploy",
+    "deploy": "yarn build && wrangler deploy",
     "lint": "eslint src"
   },
   "browserslist": {
