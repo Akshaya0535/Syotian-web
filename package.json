@@ -63,7 +63,7 @@
   },
   "scripts": {
     "start": "parcel",
-    "build": "parcel build && sh scripts/copy-public-to-dist.sh",
+    "build": "parcel build && node scripts/copy-public-to-dist.js",
     "test": "jest",
     "deploy": "yarn build && wrangler deploy",
     "lint": "eslint src"
